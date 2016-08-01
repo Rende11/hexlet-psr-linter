@@ -1,7 +1,7 @@
 {
     "name": "rende11/hexlet-php-linter",
     "description": "An application for check and fix php code.",
-    "type": "application",
+    "type": "library",
     "require": {
         "php": "^7.0"
     },
