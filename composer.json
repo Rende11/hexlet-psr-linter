@@ -2,9 +2,6 @@
     "name": "rende11/hexlet-psr-linter",
     "description": "An application for check and fix php code.",
     "type": "library",
-    "require": {
-        "php": "^7.0"
-    },
     "license": "MIT",
     "authors": [
         {
@@ -12,10 +9,15 @@
             "email": "artamonovn@gmail.com"
         }
     ],
+    "bin" : [ "bin/hexlet-psr-linter"],
     "autoload": {
       "psr-4": {
 	    "PsrLinter\\": "src/"
       }
+    },
+    "require": {
+        "php": "^7.0",
+        "nikic/php-parser": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "*",
