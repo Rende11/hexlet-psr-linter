@@ -1,0 +1,26 @@
+{
+    "name": "rende11/hexlet-psr-linter",
+    "description": "An application for check and fix php code.",
+    "type": "library",
+    "require": {
+        "php": "^7.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rende11",
+            "email": "artamonovn@gmail.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+	    "PsrLinter\\": "src/"
+      }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "squizlabs/php_codesniffer": "*",
+        "codeclimate/php-test-reporter": "dev-master"
+    }
+
+}
