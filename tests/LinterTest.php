@@ -1,12 +1,14 @@
 <?php
-namespace HexletPsrLinter\Tests;
 
-class LinterTest extends \PHPUnit_Framework_TestCase 
+namespace PsrLinter;
+
+class LinterTest extends \PHPUnit_Framework_TestCase
 {
 	public function testGetData()
 	{
 		$data = 'data';
-		$linter = new \HexletPsrLinter\Linter($data);
+		$linter = new Linter($data);
+
 		$this->assertEquals($data, $linter->getData());
 	}
 }

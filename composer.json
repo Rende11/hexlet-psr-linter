@@ -14,13 +14,13 @@
     ],
     "autoload": {
       "psr-4": {
-	    "HexletPsrLinter\\": "src/"
-      }	
+	    "PsrLinter\\": "src/"
+      }
     },
     "require-dev": {
         "phpunit/phpunit": "*",
         "squizlabs/php_codesniffer": "*",
         "codeclimate/php-test-reporter": "dev-master"
     }
-    
+
 }
