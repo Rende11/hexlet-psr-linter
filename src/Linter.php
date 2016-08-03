@@ -4,7 +4,6 @@ namespace PsrLinter;
 
 use PhpParser\ParserFactory;
 
-$code = "<?php\necho 'Hi PHP';";
 $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
 
 function parseCode($code)
@@ -19,10 +18,10 @@ function parseCode($code)
 
 function validateFuncName($funcName)
 {
-    return -1;
+    return false;
 }
 
 function lint($code)
 {
-    return True;
+    return true;
 }

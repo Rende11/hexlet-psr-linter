@@ -16,7 +16,7 @@ class LinterTest extends \PHPUnit_Framework_TestCase
     
     public function testLint()
     {
-        $this->assertTrue(lint($this->code), True);
+        $this->assertTrue(lint($this->code), true);
     }
         
     /**
@@ -30,12 +30,11 @@ class LinterTest extends \PHPUnit_Framework_TestCase
     public function additionalProvider()
     {
         return [
-            ['getName', True],
-            ['getname', True],
-            ['GetName', False],
-            ['get-name', False],
-            ['get_name', False]
+            ['getName', true],
+            ['getname', true],
+            ['GetName', false],
+            ['get-name', false],
+            ['get_name', false]
         ];
     }
-    
 }
