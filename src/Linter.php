@@ -14,10 +14,15 @@ function parseCode($code)
     } catch (Exception $e) {
         echo 'Parse error', $e->getMessage();
     }
-return $ast;
+    return $ast;
 }
 
-function lint ($code)
+function validateFuncName($funcName)
+{
+    return -1;
+}
+
+function lint($code)
 {
     return True;
 }
