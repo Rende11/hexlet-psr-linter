@@ -2,12 +2,14 @@
 
 namespace PsrLinter;
 
+use function PsrLinter\lint;
+
 class LinterTest extends \PHPUnit_Framework_TestCase
 {
-    public function testGetData()
+    private $code = "<?php\necho 'Hi PHP';";
+
+    public function testLint()
     {
-        $data = 'data';
-        $linter = new Linter($data);
-        $this->assertEquals($data, $linter->getData());
+        $this->assertTrue(lint($this->code), True);
     }
 }

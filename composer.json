@@ -13,7 +13,8 @@
     "autoload": {
       "psr-4": {
 	    "PsrLinter\\": "src/"
-      }
+      },
+      "files": ["src/Linter.php"]
     },
     "require": {
         "php": "^7.0",

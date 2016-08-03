@@ -2,17 +2,22 @@
 
 namespace PsrLinter;
 
-class Linter
+use PhpParser\ParserFactory;
+
+$code = "<?php\necho 'Hi PHP';";
+$parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
+
+function parseCode($code)
 {
-    private $data;
-
-    public function __construct($data)
-    {
-        $this->data = $data;
+    try {
+        $ast = $parser->parse($code);
+    } catch (Exception $e) {
+        echo 'Parse error', $e->getMessage();
     }
+return $ast;
+}
 
-    public function getData()
-    {
-        return $this->data;
-    }
+function lint ($code)
+{
+    return True;
 }
