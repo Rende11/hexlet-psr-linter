@@ -4,9 +4,12 @@ namespace PsrLinter;
 
 use PhpParser\ParserFactory;
 
-$parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
+function createParser ()
+{
+    return (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
+}
 
-function parseCode($code)
+function parseCode($code, $parser)
 {
     try {
         $ast = $parser->parse($code);
