@@ -4,7 +4,7 @@ function test ()
 {    
 }
 
-function identity ($arg)
+function Identity ($arg)
 {
         return $arg;
 }

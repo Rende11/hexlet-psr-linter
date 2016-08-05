@@ -11,7 +11,7 @@ class LinterTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->code = "<?php\necho 'Hi PHP';";
+        $this->code = file_get_contents('tests/fixtures/example.php');
     }
 
     public function testLint()

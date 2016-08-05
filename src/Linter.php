@@ -9,5 +9,17 @@ require_once __DIR__."/../vendor/autoload.php";
 
 function lint($code)
 {
-    return true;
+    $function = getFunctionsNames($code);
+    var_dump($function);
+}
+
+function checkFuncName ($item)
+{
+    if (!isCamelCase($item)){
+        file_put_contents('log.php', 'ERROR'.$item);
+    }
+    
+    if (!isMagicMethod($item)){
+        file_put_contents('log.php', 'ERROR'.$item);
+    }
 }
