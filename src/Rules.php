@@ -1,12 +1,8 @@
 <?php
 namespace PsrLinter;
 
-function getFuncNameRules()
-{
-    return $funcNameRules;
-}
 
-$magicMethods = [
+const magicMethods = [
     "__construct",
     " __destruct",
     "__call()",
@@ -24,12 +20,14 @@ $magicMethods = [
     "__debugInfo"
 ];
 
-$isCamelCase = function ($item){
-    return true;
-};
 
-$isMagicMethod = function ($item) use ($magicMethods){
-    return in_array($item, $magicMethods);
-};
+function isCamelCase ($item)
+{
+    return \PHP_CodeSniffer::isCamelCaps($item);
+}
 
-$funcNameRules = [$isCamelCase, $isMagicMethod];
+function isMagicMethod ($item)
+{
+    return in_array($item, magicMethods);
+}
+

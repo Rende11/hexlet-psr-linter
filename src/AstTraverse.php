@@ -24,6 +24,6 @@ function getFunctionsNames($code)
     $traverser = new NodeTraverser;
     $ast = parseCode($code, $parser);
     $traverser->addVisitor($visitor);
-    $ast = $traverser->traverse($ast);
+    $node = $traverser->traverse($ast);
     return $visitor->getFunctionsNames();
 }
