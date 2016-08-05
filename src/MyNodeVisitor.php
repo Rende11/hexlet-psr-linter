@@ -8,7 +8,7 @@ class MyNodeVisitor extends NodeVisitorAbstract
 {
     private $functions = [];
 
-    public function leaveNode ($node)
+    public function leaveNode (Node $node)
     {
         if ($node instanceof Node\Stmt\Function_ || 
             $node instanceof Node\Stmt\ClassMethod){

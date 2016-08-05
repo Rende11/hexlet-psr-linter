@@ -3,6 +3,7 @@ namespace PsrLinter;
 
 use PhpParser\NodeTraverser;
 use PhpParser\ParserFactory;
+use PsrLinter\NodeVisitor;
 
 
 function createParser()
@@ -16,21 +17,13 @@ function parseCode($code, $parser)
 
 }
 
-function createTraverser()
-{
-    return new NodeTraverser;
-}
-
-$defaultParseCode = function ($code) use ($parser){
-    return parseCode($code, $parser);
-};
-function getFunctions($code)
+function getFunctionsNames($code)
 {
     $parser = createParser();
-    $ast = $defaultParseCode($code);
     $visitor = new MyNodeVisitor;
     $traverser = new NodeTraverser;
+    $ast = parseCode($code, $parser);
     $traverser->addVisitor($visitor);
-    $result = $traverser->traverse($ast);
-    return $visitor->getFunctions();
+    $ast = $traverser->traverse($ast);
+    return $visitor->getFunctionsNames();
 }
