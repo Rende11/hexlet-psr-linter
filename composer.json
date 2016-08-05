@@ -14,7 +14,11 @@
       "psr-4": {
 	    "PsrLinter\\": "src/"
       },
-      "files": ["src/Linter.php"]
+      "files": ["src/Linter.php",
+                "src/Rules.php",
+                "src/AstTraverse",
+                "src/MyNodeVisitor"
+            ]
     },
     "require": {
         "php": "^7.0",

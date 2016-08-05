@@ -2,26 +2,28 @@
 
 namespace PsrLinter;
 
-use PhpParser\ParserFactory;
+require_once __DIR__."/../vendor/autoload.php";
+use function getFunctions;
 
-function createParser ()
-{
-    return (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
-}
+$code = "<?php\n echo 'p';";
 
-function parseCode($code, $parser)
-{
-    try {
-        $ast = $parser->parse($code);
-    } catch (Exception $e) {
-        echo 'Parse error', $e->getMessage();
-    }
-    return $ast;
-}
+$functions = getFunctions($code);
+
+var_dump ($functions);
 
 function validateFuncName($funcName)
 {
-    return false;
+    // $va
+    // $result = [];
+    // foreach ($funcNameRules as $rule) {
+    //     if (!$rule($funcName)){
+    //         $result[] = [$funcName, $rule];
+    //     }
+    // }
+    // if (empty($result)){
+    //     return true;
+    // }
+    // return false;
 }
 
 function lint($code)
