@@ -3,13 +3,9 @@
 namespace PsrLinter;
 
 require_once __DIR__."/../vendor/autoload.php";
-use function getFunctions;
 
-$code = "<?php\n echo 'p';";
 
-$functions = getFunctions($code);
 
-var_dump ($functions);
 
 function validateFuncName($funcName)
 {
