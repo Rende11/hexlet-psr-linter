@@ -14,20 +14,17 @@
       "psr-4": {
 	    "PsrLinter\\": "src/"
       },
-      "files": ["src/Linter.php",
-                "src/Rules.php",
-                "src/AstTraverse",
-                "src/MyNodeVisitor"
-            ]
+      "files": ["src/Linter.php"]
     },
     "require": {
         "php": "^7.0",
-        "nikic/php-parser": "dev-master"
+        "nikic/php-parser": "^2.1"
     },
     "require-dev": {
         "phpunit/phpunit": "*",
         "squizlabs/php_codesniffer": "*",
-        "codeclimate/php-test-reporter": "dev-master"
+        "codeclimate/php-test-reporter": "dev-master",
+        "psy/psysh" : "@stable"
     }
 
 }
