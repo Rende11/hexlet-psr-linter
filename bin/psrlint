@@ -7,16 +7,6 @@ require_once __DIR__."/../vendor/autoload.php";
 $options = getopt ("",["path:"]);
 
 var_dump($options);
-$code = file_get_contents($options["path"]);
-lint($code);
-
-$log = getLog();
-
-if (empty($log)){
-    echo "Everything is OK!";
-} else {
-    print_r($log);
-} 
 
 
 

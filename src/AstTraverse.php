@@ -17,11 +17,21 @@ function parseCode($code, $parser)
 
 }
 
+function createVisitor()
+{
+    return new MyNodeVisitor;
+}
+
+function createTraverser()
+{
+    return new NodeTraverser;
+}
+
 function getFunctionsNames($code)
 {
     $parser = createParser();
-    $visitor = new MyNodeVisitor;
-    $traverser = new NodeTraverser;
+    $visitor = createVisitor();
+    $traverser = createTraverser();
     $ast = parseCode($code, $parser);
     $traverser->addVisitor($visitor);
     $node = $traverser->traverse($ast);
