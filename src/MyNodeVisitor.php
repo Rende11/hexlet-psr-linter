@@ -10,12 +10,13 @@ class MyNodeVisitor extends NodeVisitorAbstract
 
     public function leaveNode ($node)
     {
-        if ($node instanceof Node\Stmt\Function_){
-            $this->functions[] = $node;
+        if ($node instanceof Node\Stmt\Function_ || 
+            $node instanceof Node\Stmt\ClassMethod){
+            $this->functions[] = $node->name;
         }
     }
 
-    public function getFunctions ()
+    public function getFunctionsNames()
     {
         return $this->functions;
     }
