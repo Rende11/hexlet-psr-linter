@@ -2,24 +2,47 @@
 
 namespace PsrLinter;
 
-require_once __DIR__."/../vendor/autoload.php";
+use function PsrLinter\getFuncInfo;
+use function PsrLinter\isCamelCase;
+use function PsrLinter\isMagicMethod;
 
-
+function parseFile($path)
+{
+    return file_get_contents($path);
+}
 
 
 function lint($code)
 {
-    $function = getFunctionsNames($code);
-    var_dump($function);
+    $info = getFuncInfo($code);
+    $log = [];
+    $result = isValidFunctionName($info,$log);
+    var_dump($result);
 }
 
-function checkFuncName ($item)
+function isValidFunctionName($funcInfo, $log)
 {
-    if (!isCamelCase($item)){
-        file_put_contents('log.php', 'ERROR'.$item);
+    foreach ($funcInfo as $value){
+        list ($func, $line) = $value;
+        if (!isMagicMethod($func) && !isCamelCase($func)){
+                writeLog($func, $line, 'NameIsNotValid', $log);
+        }
     }
-    
-    if (!isMagicMethod($item)){
-        file_put_contents('log.php', 'ERROR'.$item);
+    return $log;
+}
+
+
+function run ($path)
+{
+    $code = parseFile($path);
+    $errors = lint($code);
+    showResult($errors);
+}
+
+function showResult ($log){
+    if (empty($log)){
+        echo "OK";
+    } else {
+        printf($log);
     }
 }

@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 function test ()
-{    
+{
 }
 
-function Identity ($arg)
+function IDENTITY ($arg)
 {
         return $arg;
 }

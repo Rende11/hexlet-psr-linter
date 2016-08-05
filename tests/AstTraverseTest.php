@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace PsrLinter;
 
 use PsrLinter\AstTraverse;
@@ -12,9 +12,10 @@ class AstTraverseTest extends \PHPUnit_Framework_TestCase
     {
         $this->code = file_get_contents('tests/fixtures/example.php');
     }
-    
+
     public function testGetFunctionsNames()
     {
+        var_dump(getFunctionsNames($this->code));
         $this->assertEquals(getFunctionsNames($this->code), $this->fuctionNames);
     }
 }

@@ -21,6 +21,7 @@ const magicMethods = [
 ];
 
 
+
 function isCamelCase ($item)
 {
     return \PHP_CodeSniffer::isCamelCaps($item);
@@ -30,4 +31,3 @@ function isMagicMethod ($item)
 {
     return in_array($item, magicMethods);
 }
-

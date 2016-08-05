@@ -4,9 +4,8 @@
 
 require_once __DIR__."/../vendor/autoload.php";
 
+use function PsrLinter\run;
+
 $options = getopt ("",["path:"]);
 
-var_dump($options);
-
-
-
+run($options["path"]);
