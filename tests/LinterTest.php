@@ -20,6 +20,4 @@ class LinterTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertTrue(lint($this->code), true);
     }
-
-    
 }

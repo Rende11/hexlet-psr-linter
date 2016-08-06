@@ -2,17 +2,11 @@
 
 namespace PsrLinter;
 
-
 use function PsrLinter\writeLog;
+
 class LoggerTest extends \PHPUnit_Framework_TestCase
 {
-
-    protected function setUp ()
-    {
-
-    }
-
-    public function testWriteLog ()
+    public function testWriteLog()
     {
         $emptyLog = [];
         $log = writeLog("testFunc", 7, "isCamelCase", $emptyLog);

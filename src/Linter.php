@@ -17,14 +17,14 @@ function lint($code)
 {
     $info = getFuncInfo($code);
     $log = [];
-    $result = isValidFunctionName($info,$log);
+    $result = isValidFunctionName($info, $log);
     var_dump($result);
     return true;
 }
 
 function isValidFunctionName($funcInfo, $logger)
 {
-    foreach ($funcInfo as $value){
+    foreach ($funcInfo as $value) {
         list ($func, $line) = $value;
         if (!isMagicMethod($func) && !isCamelCase($func)){
                 $log = writeLog($func, $line, 'camelCase', $logger);
@@ -34,15 +34,15 @@ function isValidFunctionName($funcInfo, $logger)
 }
 
 
-function run ($path)
+function run($path)
 {
     $code = parseFile($path);
     $errors = lint($code);
     showResult($errors);
 }
 
-function showResult ($log){
-    if (empty($log)){
+function showResult($log) {
+    if (empty($log)) {
         echo "OK";
     } else {
         printf($log);

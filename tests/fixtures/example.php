@@ -1,10 +1,10 @@
 <?php
 
-function test ()
+function test()
 {
 }
 
-function IDENTITY ($arg)
+function IDENTITY($arg)
 {
         return $arg;
 }

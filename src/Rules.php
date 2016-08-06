@@ -1,6 +1,6 @@
 <?php
-namespace PsrLinter;
 
+namespace PsrLinter;
 
 const magicMethods = [
     "__construct",
@@ -22,12 +22,12 @@ const magicMethods = [
 
 
 
-function isCamelCase ($item)
+function isCamelCase($item)
 {
     return \PHP_CodeSniffer::isCamelCaps($item);
 }
 
-function isMagicMethod ($item)
+function isMagicMethod($item)
 {
     return in_array($item, magicMethods);
 }
