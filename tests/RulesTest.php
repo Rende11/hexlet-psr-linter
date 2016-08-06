@@ -19,7 +19,7 @@ class RulesTest extends \PHPUnit_Framework_TestCase
             ['__construct', true]
         ];
     }
-    
+
     /**
      * @dataProvider camelCaseProvider
      */

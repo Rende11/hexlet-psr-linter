@@ -2,7 +2,7 @@
 
 namespace PsrLinter;
 
-const magicMethods = [
+const MAGICMETHODS= [
     "__construct",
     " __destruct",
     "__call()",
@@ -29,5 +29,5 @@ function isCamelCase($item)
 
 function isMagicMethod($item)
 {
-    return in_array($item, magicMethods);
+    return in_array($item, MAGICMETHODS);
 }

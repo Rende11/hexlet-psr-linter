@@ -26,7 +26,7 @@ function isValidFunctionName($funcInfo, $logger)
 {
     foreach ($funcInfo as $value) {
         list ($func, $line) = $value;
-        if (!isMagicMethod($func) && !isCamelCase($func)){
+        if (!isMagicMethod($func) && !isCamelCase($func)) {
                 $log = writeLog($func, $line, 'camelCase', $logger);
         }
     }
@@ -41,7 +41,8 @@ function run($path)
     showResult($errors);
 }
 
-function showResult($log) {
+function showResult($log)
+{
     if (empty($log)) {
         echo "OK";
     } else {
