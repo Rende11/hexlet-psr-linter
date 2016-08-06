@@ -5,6 +5,7 @@ namespace PsrLinter;
 use function PsrLinter\getFuncInfo;
 use function PsrLinter\isCamelCase;
 use function PsrLinter\isMagicMethod;
+use function PsrLinter\writeLog;
 
 function parseFile($path)
 {
@@ -18,14 +19,15 @@ function lint($code)
     $log = [];
     $result = isValidFunctionName($info,$log);
     var_dump($result);
+    return true;
 }
 
-function isValidFunctionName($funcInfo, $log)
+function isValidFunctionName($funcInfo, $logger)
 {
     foreach ($funcInfo as $value){
         list ($func, $line) = $value;
         if (!isMagicMethod($func) && !isCamelCase($func)){
-                writeLog($func, $line, 'NameIsNotValid', $log);
+                $log = writeLog($func, $line, 'camelCase', $logger);
         }
     }
     return $log;

@@ -19,4 +19,5 @@ class MyNodeVisitor extends NodeVisitorAbstract
         return $this->functions;
     }
 
+    
 }
