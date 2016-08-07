@@ -9,6 +9,7 @@ class LinterTest extends \PHPUnit_Framework_TestCase
 {
     private $code;
     private $path;
+    private $log = ['line 7 | Function names MUST be declared in camelCase() - IDENTITY'];
 
     protected function setUp()
     {
@@ -18,6 +19,6 @@ class LinterTest extends \PHPUnit_Framework_TestCase
 
     public function testLint()
     {
-        $this->assertTrue(lint($this->code), true);
+        $this->assertTrue(lint($this->code), $this->log);
     }
 }

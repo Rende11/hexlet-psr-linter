@@ -9,7 +9,7 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
     public function testWriteLog()
     {
         $emptyLog = [];
-        $log = writeLog("testFunc", 7, "isCamelCase", $emptyLog);
-        $this->assertEquals("testFunc in line 7 is not isCamelCase", $log[0]);
+        $log = writeLog("testFunc", 7, "Wrong function name", $emptyLog);
+        $this->assertEquals("line 7 | Wrong function name - testFunc", $log[0]);
     }
 }

@@ -5,7 +5,12 @@
 require_once __DIR__."/../vendor/autoload.php";
 
 use function PsrLinter\run;
+use function PsrLinter\showResult;
+use function PsrLinter\returnExitCode;
 
-$options = getopt ("",["path:"]);
+$options = getopt("",["path:"]);
 
-run($options["path"]);
+$result = run($options["path"]);
+
+showResult($result);
+returnExitCode($result);

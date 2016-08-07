@@ -4,7 +4,7 @@ namespace PsrLinter;
 use PhpParser\NodeTraverser;
 use PhpParser\ParserFactory;
 use PsrLinter\NodeVisitor;
-use function PsrLinter\getFunctionsInfo;
+use function PsrLinter\getErrors;
 
 function createParser()
 {
@@ -26,7 +26,7 @@ function createTraverser()
     return new NodeTraverser;
 }
 
-function getFuncInfo($code)
+function getErrorList($code)
 {
     $parser = createParser();
     $visitor = createVisitor();
@@ -34,5 +34,5 @@ function getFuncInfo($code)
     $ast = parseCode($code, $parser);
     $traverser->addVisitor($visitor);
     $node = $traverser->traverse($ast);
-    return $visitor->getFunctionsInfo();
+    return $visitor->getErrors();
 }
