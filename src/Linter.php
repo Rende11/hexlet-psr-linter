@@ -12,10 +12,10 @@ function parseFile($path)
 
 function makeLinter($code)
 {
-    return function ($rules) use ($code){
+    return function ($rules) use ($code) {
         $errors = getErrorList($code, $rules);
     };
-    return $errors; 
+    return $errors;
 }
 
 $lint = makeLinter($checkRules);
