@@ -16,9 +16,9 @@ function parseCode($code, $parser)
     return $parser->parse($code);
 }
 
-function createVisitor()
+function createVisitor($rules)
 {
-    return new MyNodeVisitor;
+    return new MyNodeVisitor($rules);
 }
 
 function createTraverser()
@@ -26,10 +26,10 @@ function createTraverser()
     return new NodeTraverser;
 }
 
-function getErrorList($code)
+function getErrorList($code, $rules)
 {
     $parser = createParser();
-    $visitor = createVisitor();
+    $visitor = createVisitor($rules);
     $traverser = createTraverser();
     $ast = parseCode($code, $parser);
     $traverser->addVisitor($visitor);

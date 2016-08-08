@@ -4,7 +4,6 @@ namespace PsrLinter;
 
 use function PsrLinter\getErrorList;
 
-
 function parseFile($path)
 {
     return file_get_contents($path);
@@ -12,28 +11,31 @@ function parseFile($path)
 
 function lint($code)
 {
-    $info = getErrorList($code);
-    $result = isValidFunctionName($info, $logger);
-    var_dump($result);
-    return $result;
-}
-
-
-function run($path)
-{
-    $code = parseFile($path);
-    $errors = lint($code);
+    $errors = getErrorList($code, $rules);
     return $errors;
 }
 
-function showResult($log)
+function showResult($errors)
 {
-    if (empty($log)) {
-        echo "OK";
+    if (empty($errors)) {
+        return "OK";
     } else {
-        var_dump($log);
-        foreach ($log as $value) {
-            echo $value;
-        };
+        return glueLog($errors);
+    }
+}
+
+function glueLog($errors)
+{
+    foreach ($errors as $value) {
+        list ($name, $startLine, $errorMessage) = $value;
+        $log[] = implode("| ", $value);
+    }
+    return $log;
+}
+
+function returnExitCode($errors)
+{
+    if ($errors) {
+        exit(2);
     }
 }

@@ -4,14 +4,19 @@ namespace PsrLinter;
 use PhpParser\Node;
 use PhpParser\NodeVisitorAbstract;
 use function PsrLinter\getRules;
+
 class MyNodeVisitor extends NodeVisitorAbstract
 {
     private $errors = [];
-
+    private $rules;
+    
+    public function __construct($rules)
+    {
+        $this->rules = $rules;
+    }
     public function leaveNode(Node $node)
     {
-        $this->checkNode($node, getRules());
-
+        $this->checkNode($node, $this->rules);
     }
 
     public function checkNode($node, $rules)
@@ -30,6 +35,4 @@ class MyNodeVisitor extends NodeVisitorAbstract
     {
         return $this->errors;
     }
-
-
 }
