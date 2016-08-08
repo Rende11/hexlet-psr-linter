@@ -3,17 +3,24 @@
 namespace PsrLinter;
 
 use function PsrLinter\getErrorList;
+use function PsrLinter\getRules;
 
 function parseFile($path)
 {
     return file_get_contents($path);
 }
 
-function lint($code)
+function makeLinter($code)
 {
-    $errors = getErrorList($code, $rules);
-    return $errors;
+    return function ($rules) use ($code){
+        $errors = getErrorList($code, $rules);
+    };
+    return $errors; 
 }
+
+$lint = makeLinter($checkRules);
+
+
 
 function showResult($errors)
 {

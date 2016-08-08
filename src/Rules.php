@@ -21,16 +21,16 @@ function isMagicMethod($item)
     return in_array($item, $magicMethods);
 }
 
-$isCamelCase = function ($item) {
-    return \PHP_CodeSniffer::isCamelCaps($item);
-};
-
 $isMagicMethod = function ($item) {
     $magicMethods= ["__construct", " __destruct", "__call()", "__callStatic",
         "__get", "__set", "__isset", "__unset", "__sleep", "__wakeup",
         "__toString", "__invoke", "__set_state", "__clone", "__debugInfo"
     ];
     return in_array($item, $magicMethods);
+};
+
+$isCamelCase = function ($item) {
+    return \PHP_CodeSniffer::isCamelCaps($item);
 };
 
 $checkRules = [
@@ -40,5 +40,5 @@ $checkRules = [
 
 function getRules()
 {
-    return $this->checkRules;
+    return $checkRules;
 }
