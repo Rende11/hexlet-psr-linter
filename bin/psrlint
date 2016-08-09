@@ -5,13 +5,18 @@
 require_once __DIR__."/../vendor/autoload.php";
 
 use function PsrLinter\parseFile;
-use function PsrLinter\showResult;
-use function PsrLinter\returnExitCode;
+use function PsrLinter\returnResult;
+use function PsrLinter\makeLinter;
 
 $options = getopt("",["path:"]);
 
 $code = parseFile($options["path"]);
-$result = $lint($code);
 
-print(showResult($result));
-returnExitCode($result);
+$lint = makeLinter(isset($rules));
+$errors = $lint($code);
+
+print(returnResult($errors));
+
+if (!$errors) {
+    exit(2);
+}

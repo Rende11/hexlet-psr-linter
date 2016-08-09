@@ -18,11 +18,7 @@ function makeLinter($code)
     return $errors;
 }
 
-$lint = makeLinter($checkRules);
-
-
-
-function showResult($errors)
+function returnResult($errors)
 {
     if (empty($errors)) {
         return "OK";
@@ -38,11 +34,4 @@ function glueLog($errors)
         $log[] = implode("| ", $value);
     }
     return $log;
-}
-
-function returnExitCode($errors)
-{
-    if ($errors) {
-        exit(2);
-    }
 }
