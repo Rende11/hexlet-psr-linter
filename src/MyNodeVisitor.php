@@ -3,20 +3,17 @@ namespace PsrLinter;
 
 use PhpParser\Node;
 use PhpParser\NodeVisitorAbstract;
-use function PsrLinter\getRules;
+use function PsrLinter\Rules\isMagicMethod;
+use function PsrLinter\Rules\isCamelCase;
 
 class MyNodeVisitor extends NodeVisitorAbstract
 {
     private $errors = [];
-    private $rules;
+    private $checks = [];
     
-    public function __construct($rules)
-    {
-        $this->rules = $rules;
-    }
     public function leaveNode(Node $node)
     {
-        $this->checkNode($node, $this->rules);
+        $this->checkNode($node);
     }
 
     public function checkNode($node, $rules)

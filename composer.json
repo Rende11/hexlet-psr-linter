@@ -16,8 +16,7 @@
       },
       "files": ["src/Linter.php",
           "src/AstTraverse.php",
-          "src/Rules.php",
-          "src/Logger.php"
+          "src/Rules.php"
         ]
     },
     "require": {

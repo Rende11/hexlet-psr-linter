@@ -10,21 +10,15 @@ function parseFile($path)
     return file_get_contents($path);
 }
 
-function makeLinter($code)
+function lint($code)
 {
-    return function ($rules) use ($code) {
-        $errors = getErrorList($code, $rules);
-    };
+    $errors = getErrorList($code, $rules);
     return $errors;
 }
 
-function returnResult($errors)
+function getResult($errors)
 {
-    if (empty($errors)) {
-        return "OK";
-    } else {
-        return glueLog($errors);
-    }
+    return (empty($errors)) ? "OK" : glueLog($errors);
 }
 
 function glueLog($errors)

@@ -1,8 +1,8 @@
 <?php
 
-namespace PsrLinter;
+namespace PsrLinter\Rules;
 
-$isMagicMethod = function ($item) {
+function isMagicMethod($item) {
     $magicMethods= ["__construct", " __destruct", "__call()", "__callStatic",
         "__get", "__set", "__isset", "__unset", "__sleep", "__wakeup",
         "__toString", "__invoke", "__set_state", "__clone", "__debugInfo"
@@ -10,11 +10,6 @@ $isMagicMethod = function ($item) {
     return in_array($item, $magicMethods);
 };
 
-$isCamelCase = function ($item) {
+function isCamelCase($item) {
     return \PHP_CodeSniffer::isCamelCaps($item);
 };
-
-$checkRules = [
-    [$isCamelCase, 'Function names MUST be declared in camelCase()', 'Node\Stmt\Function_'],
-    [$isMagicMethod,'Function names MUST be declared in camelCase()', 'Node\Stmt\Function_']
-];
