@@ -9,25 +9,21 @@ use function PsrLinter\Rules\isCamelCase;
 class MyNodeVisitor extends NodeVisitorAbstract
 {
     private $errors = [];
-    private $checks = [];
-    
+        
     public function leaveNode(Node $node)
     {
         $this->checkNode($node);
     }
 
-    public function checkNode($node, $rules)
+    public function checkNode($node)
     {
-        foreach ($rules as $value) {
-            list ($rule, $errorMessage, $type) = $value;
-            if ($node instanceof $type) {
-                if (!$rule($node)) {
-                    $this->errors = [$node->name, $node->getAttribute('startLine'), $errorMessage];
-                }
+        if ($node instanceof Node\Stmt\Function_) {
+            if (!isMagicMethod($node) && !isCamelCase($node)) {
+                $this->errors = [$node->name, $node->getAttribute('startLine'), "name MUST declared in camelCase"];
             }
         }
     }
-
+    
     public function getErrors()
     {
         return $this->errors;
